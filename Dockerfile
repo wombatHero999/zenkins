@@ -10,7 +10,7 @@ LABEL maintainer="mkm" \
       description="This image is guestbook service"
 
 ENV APP_HOME /app
-EXPOSE 8080
+EXPOSE 10000
 VOLUME /app/upload
 
 WORKDIR $APP_HOME
