@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Disabled;
 
-//가즈아
+//가즈아!!
 public class PostTest {
 	//@Disabled
 	@Test
