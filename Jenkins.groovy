@@ -49,17 +49,12 @@ pipeline {
         stage('Deploy Production') {
             steps {
                 sshagent(credentials: ['SSH-PrivateKey']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@zzzz docker container rm -f coreflow-back"
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@zzzz docker container run \
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@13.209.48.246 docker container rm -f coreflow-api"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@13.209.48.246 docker container run \
                                         -d \
-                                        -p 8081:10000  \
-                                        --name=guestbookapp \
-                                        -e MYSQL_IP=172.31.0.120 \
-                                        -e MYSQL_PORT=3306 \
-                                        -e MYSQL_DATABASE=guestbook \
-                                        -e MYSQL_USER=guestbook \
-                                        -e MYSQL_PASSWORD=education \
-                                        wombat1234/cicd_guestbook:1.0 "
+                                        -p 8081:8081  \
+                                        --name=coreflow-api \                                        
+                                        ${strDockerImage}"
                 }
             }
         }
